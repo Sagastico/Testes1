@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HP2</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script type="text/javascript">
+
+		 function estudante(nome,casa,animal,localAtual){
+        	this.nome = nome;
+        	this.casa = casa;
+        	this.animal = animal;
+        	this.localAtual = localAtual;
+        }
+        function matricular(){
+        	var e = new estudante(nome.value, casa.value, animal.value, local.value);
+        	alunos.push(e);
+        	alert("Novo aluno adicionado!");
+        	nome.value = "";
+        	casa.value = "";
+        	animal.value = "";
+        	local.value = "";
+        }
+        var alunos = []
+
+        alunos [0] = new estudante ("Harry Potter","Grifinoria","coruja","Dursley s");
+        alunos [1] =  new estudante ("Ronald Wesley","Grifinoria","rato","toca");
+        alunos [2] =  new estudante ("Hermione Granger","Grifinoria","gato","Granger s");
+        alunos [3] =  new estudante ("Neville Longbottom","Grifinoria","sapo","St Mungus");
+        alunos [4] =  new estudante ("Draco Malfoy","Sonserina","coruja","Beco Diagonal");
+        alunos [5] =  new estudante ("Cho Chang","Grifinoria","sapo","Hogwarts");
+        alunos [6] = new estudante ("Cedrico Diggory","Grifinoria","coruja","Hogwarts");
+
+        function listar(casa){
+        	var i;
+        	var divcasa = document.getElementById('listaralunos');
+        	var conteudo = "<table class='table'>";
+        	conteudo += "<tr><th>Nome</th><th>Animal</th><th>Local</th></tr>";
+        	for (i = 0; i< alunos.length; i++){
+        		if (alunos[i].casa == casa){
+        			conteudo += "<tr><td"+alunos[i].nome+"</td>";
+        			conteudo += "<td>"+alunos[i].animal+"</td>";
+        			conteudo += "<td>"+alunos[i].localAtual+"</td></tr>";
+        		}
+        	}
+        	conteudo +="</table>";
+        	divcasa.innerHTML = conteudo;
+        }
+	</script>
+</head>
+<body>
+<ul class="nav nav-tabs">
+	<li><a href="#Corvinal" onclick="listar(this.innerHTML)">Corvinal</a></li>
+	<li><a href="#Grifinoria" onclick="listar(this.innerHTML)">Grifinoria</a></li>
+	<li><a href="#Lufalufa" onclick="listar(this.innerHTML)">Lufa-lufa</a></li>
+	<li><a href="#Sonserina" onclick="listar(this.innerHTML)">Sonserina</a></li>
+</ul>
+<div class="tab-content">
+	<div id="listaralunos" class="tab-pane active">
+	</div></div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1>Novo estudante</h1>
+			</div>
+
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="nome">Nome:</label>
+						<input type="text" class="form-control" id="nome">
+					</div>
+					<div class="form-group">
+						<label for="nome">Casa:</label>
+						<select id="casa" class="form-control">
+							<option value="">--Escolha a casa--</option>
+							<option value="Corvinal">Corvinal</option>
+							<option value="Grifinoria">Grifinoria</option>
+							<option value="Lufa-Lufa">Lufa-Lufa</option>
+							<option value="Sonserina">Sonserina</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="animal">Animal:</label>
+						<input type="text" class="form-control" id="animal">
+					</div>
+					<div class="form-group">
+						<label for="local">Local:</label>
+						<input type="text" class="form-control" id="local">
+					</div>
+					<button type="button" class="btn btn-default" onclick="matricular()">Matricular</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
